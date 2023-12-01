@@ -1,13 +1,84 @@
 <!doctype html>
 <html lang="en-US">
   <head>
-    <title>Personal Portfolio</title>
+    <title>Ecommerce Test</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="reset.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <nav>
+      <div>
+        <button class="hamburger-button mobile">
+          <img src="./images/icon-menu.svg" alt="" />
+        </button>
+        <a href="#"><img src="./images/logo.svg" alt="" /></a>
+        <a href="#" class="desktop">Collections</a>
+        <a href="#" class="desktop">Men</a>
+        <a href="#" class="desktop">Women</a>
+        <a href="#" class="desktop">About</a>
+        <a href="#" class="desktop">Contact</a>
+      </div>
+      <div>
+        <button>
+          <img src="./images/icon-cart.svg" alt="" />
+        </button>
+        <button>
+          <img src="./images/image-avatar.png" alt="" />
+        </button>
+      </div>
+    </nav>
+    <main>
+      <div>
+        <img src="./images/image-product-1-thumbnail.jpg" alt="" />
+        <div>
+          <img src="./images/image-product-1.jpg" alt="" />
+          <img src="./images/image-product-2.jpg" alt="" />
+          <img src="./images/image-product-3.jpg" alt="" />
+          <img src="./images/image-product-4.jpg" alt="" />
+        </div>
+      </div>
+      <div>
+        <h4>SNEAKER COMPANY</h4>
+        <h1>
+          Fall Limited <br />
+          Sneakers
+        </h1>
+        <p>
+          These low-profile sneakers are your perfect casual wear companion.
+          Featuring a durable rubber outer sole, they'll withstand everything
+          the weather can offer.
+        </p>
+        <div>
+          <h2>$125.00</h2>
+          <h3>50%</h3>
+        </div>
+        <h3>$250.00</h3>
+      </div>
+      <div class="purchase">
+        <div class="counter">
+          <button type="button">
+            <img src="./images/icon-minus.svg" alt="" />
+          </button>
+          <input type="number" readonly />
+          <button type="button">
+            <img src="./images/icon-plus.svg" alt="" />
+          </button>
+        </div>
+        <button type="button" class="add-to-cart">
+          <img src="./images/icon-cart.svg" alt="" />
+          <h3>Add to cart</h3>
+        </button>
+      </div>
+    </main>
+
     <script src="script.js"></script>
   </body>
 </html>
