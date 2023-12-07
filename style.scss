@@ -7,6 +7,7 @@
   --light-grayish-blue: hsl(223, 64%, 98%);
   --white: hsl(0, 0%, 100%);
   --black: hsl(0, 0%, 0%);
+  --body-gutter: 12%;
 }
 @mixin flex($direction, $justify, $align, $gap: 0px) {
   display: flex;
@@ -15,10 +16,111 @@
   align-items: $align;
   gap: $gap;
 }
+.purchase .counter input {
+  background-color: transparent;
+}
+.bottom-orange:after {
+  content: "";
+  background-color: var(--orange);
+  position: absolute;
+  left: 0px;
+  height: 4px;
+  width: 100%;
+  top: 57px;
+}
+.cart {
+  right: var(--body-gutter);
+  position: absolute;
+  display: none;
+  border-radius: 8px;
+  flex-direction: column;
+  gap: 25px;
+  h5 {
+    font-size: 16px;
+    color: var(--black);
+    font-weight: 700;
+  }
+  & > div:not(:first-of-type) {
+    flex-grow: 1;
+    @include flex(row, center, center);
+  }
+  .cart-line {
+    background-color: var(--grayish-blue);
+    opacity: 0.75;
+    height: 1px;
+    width: calc(100% + 15px);
+    transform: translateX(-15px);
+  }
+  box-shadow: 0px 6px 10px 0px var(--black);
+  height: 200px;
+  width: 250px;
+  max-width: max-content;
+  max-height: max-content;
+  padding-left: 15px;
+  padding-top: 15px;
+  top: 100px;
+  z-index: 10;
+  background-color: var(--white);
+  h3 {
+    letter-spacing: 1.4px;
+    font-size: 13px;
+    color: var(--very-dark-blue);
+    transform: translateY(-25px) translateX(-10px);
+  }
+}
 
+.clicked-image {
+  position: relative;
+  border: 2px solid var(--orange);
+  border-radius: 10px;
+  background-color: white;
+  &::after {
+    border-radius: 10px;
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255, 0.5);
+  }
+}
+@media screen and (min-width: 768px) {
+  dialog {
+    display: none;
+  }
+}
+dialog {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 65%;
+  height: 100%;
+  border: none;
+
+  box-shadow: none;
+  outline: none;
+  button {
+    margin-bottom: 40px;
+    background-color: transparent;
+  }
+  padding: 25px 0px 0px 25px;
+  div {
+    @include flex(column, initial, initial, 30px);
+    a {
+      font-size: 20px;
+      color: var(--black);
+      font-weight: 700;
+    }
+  }
+}
+dialog::backdrop {
+  background-color: rgb(0, 0, 0, 0.4);
+}
 body {
   font-family: "Kumbh Sans", sans-serif;
   font-size: 16px;
+  position: relative;
 }
 .mobile {
   display: none;
@@ -29,40 +131,228 @@ a {
 button {
   outline: none;
   border: none;
+  &:hover {
+    cursor: pointer;
+  }
 }
 nav {
   @include flex(row, space-between, center);
+  margin: 0px var(--body-gutter);
+  margin-bottom: 100px;
+  border-bottom: 0.9px solid var(--grayish-blue);
+  height: 105px;
 }
 nav > div:first-child,
 nav > div:nth-child(2) {
-  @include flex(row, auto, center, 20px);
+  @include flex(row, initial, center, 20px);
+}
+nav > div:nth-child(2) {
+  gap: 30px;
+  button {
+    background-color: transparent;
+  }
+  button:not(:first-of-type) {
+    img {
+      width: 50px;
+      height: 50px;
+      border: 2px solid var(--orange);
+      border-radius: 50%;
+    }
+  }
 }
 nav > div:first-child {
   a:first-of-type {
     margin-right: 25px;
   }
   a {
+    position: relative;
     color: var(--dark-grayish-blue);
     &:hover {
       color: var(--black);
     }
   }
 }
-
+#in-cart {
+}
 main {
-  @include flex(row, space-between, auto);
+  @include flex(row, space-between, initial);
+  padding: 0px calc(var(--body-gutter) + 5%);
   & > div:first-child {
-    @include flex(column, auto, auto, 30px);
+    @include flex(column, initial, initial, 30px);
+    & > img {
+      width: 100%;
+      height: 350px;
+    }
+    img {
+      border-radius: 10px;
+    }
   }
   & > div:nth-child(2) {
-    @include flex(column, auto, auto, 45px);
+    @include flex(column, initial, initial, 35px);
+    align-self: center;
+  }
+}
+div:nth-child(2) {
+  letter-spacing: 1px;
+  h1 {
+    font-size: 30px;
+
+    line-height: 35px;
+  }
+  h4 {
+    font-size: 12px;
+    color: var(--orange);
+  }
+  h2 {
+    font-size: 24px;
+  }
+  p {
+    font-size: 15px;
+    line-height: 25px;
+    color: var(--dark-grayish-blue);
+  }
+  & > h3 {
+    font-size: 16px;
+    color: var(--dark-grayish-blue);
+    opacity: 0.8;
+    text-decoration: line-through;
+  }
+}
+.fifty-off {
+  h3 {
+    background-color: var(--pale-orange);
+    padding: 5px;
+    color: var(--orange);
+    font-size: 15px;
+  }
+}
+.four-images {
+  @include flex(row, initial, initial, 25px);
+  img {
+    width: 80px;
+    height: 80px;
+  }
+  button {
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+.purchase {
+  @include flex(row, initial, initial, 10px);
+  height: 50px;
+
+  .counter {
+    height: 100%;
+    @include flex(row, initial, center);
+    padding: 0px 10px;
+    background-color: var(--light-grayish-blue);
+    flex-basis: 30%;
+    flex-shrink: 0;
+    flex-grow: 0;
+    input {
+      border: none;
+      text-align: center;
+      width: 100%;
+      transform: translateX(5px);
+      &:focus {
+        outline: none;
+      }
+    }
+    button {
+      background-color: transparent;
+      z-index: 1;
+      &:hover {
+        opacity: 0.65;
+      }
+    }
+  }
+  .add-to-cart {
+    background-color: var(--orange);
+    @include flex(row, center, center, 10px);
+    border-radius: 8px;
+
+    fill: var(--light-grayish-blue);
+    color: var(--light-grayish-blue);
+    box-shadow: 0px 4px 10px 0px var(--orange);
+    flex-basis: 70%;
+    flex-shrink: 0;
+    flex-grow: 0;
+    &:hover {
+      opacity: 0.75;
+    }
   }
 }
 @media screen and (max-width: 767px) {
+  :root {
+    --body-gutter: 9%;
+  }
   .mobile {
     display: initial;
   }
   .desktop {
     display: none;
+  }
+  nav {
+    margin-bottom: 0px;
+    border: none;
+  }
+
+  main {
+    @include flex(column, initial, initial, 30px);
+    padding: 0px;
+    padding-bottom: 170px;
+    & > div:first-child img {
+      border-radius: 0px;
+    }
+    & > div:nth-child(2) {
+      padding: 0px var(--body-gutter);
+      gap: 20px;
+    }
+    p {
+      br {
+        display: none;
+      }
+    }
+  }
+  .fifty-off h3.mobile {
+    font-size: 16px;
+    color: var(--dark-grayish-blue);
+    opacity: 0.8;
+    text-decoration: line-through;
+    background-color: var(--light-grayish-blue);
+  }
+  .fifty-off h3:first-of-type {
+    margin-right: auto;
+  }
+  .four-images {
+    display: none;
+  }
+  .mobile-arrows {
+    @include flex(row, space-between, center);
+    width: 100%;
+    left: 0px;
+    position: absolute;
+    padding: 0px 20px;
+    top: 250px;
+
+    button {
+      background-color: transparent;
+      border-radius: 50%;
+      padding: 12px;
+      background-color: var(--white);
+      @include flex(row, center, center);
+    }
+  }
+  .purchase {
+    flex-direction: column;
+    gap: 30px;
+    height: 160px;
+    .counter {
+      flex-basis: calc(50% - 30px);
+    }
+    .add-to-cart {
+      flex-basis: calc(50% - 30px);
+    }
   }
 }
